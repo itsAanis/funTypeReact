@@ -15,6 +15,7 @@ interface Film {
     films: Film[]
    deleteFilm: (filmId: number) => Promise<void>
    addFilm: (title: string, description: string) => Promise<void>
+   updateFilm: (filmId: number, title: string, description: string) => Promise<void>
   }
   const AppContext = createContext<AppContextType | null>(null)
 
@@ -29,7 +30,7 @@ const AppProvider: React.FC <Props> = ({ children }) => {
     useEffect(() => {
     const fetchMovies = async() => {
     try{
-        const res = await axios.get('http://localhost:3000/films')
+        const res = await axios.get('http://localhost:8080/films')
         const {results} = res.data
         setFilms(results);   
     }
@@ -42,7 +43,7 @@ fetchMovies() }
 // add a film here 
 const addFilm = async(Title : string, Description: string) => {
   try {
-    const response = await axios.post('http://localhost:3000/films', {
+    const response = await axios.post('http://localhost:8080/films', {
       title: Title,
       description: Description
     })
@@ -57,7 +58,7 @@ catch (err) {
 // delete a film
 const deleteFilm = async (filmId: number):Promise<void> => {
   try {
-    await axios.delete(`http://localhost:3000/films/${filmId}`)
+    await axios.delete(`http://localhost:8080/films/${filmId}`)
   setFilms((prevFilms) => prevFilms.filter((film) => film.film_id !== filmId))
 }
 catch (err) {
@@ -65,10 +66,26 @@ catch (err) {
 }
 }
 
+// update a film
+const updateFilm = async(filmId: number, Title : string, Description: string) => { 
+  try {
+    const response = await axios.put('http://localhost:8080/films', {
+      title: Title,
+      description: Description,
+      film_id : filmId
+    })
+  }
+
+catch (err) {
+  console.log(err)
+
+}
+}
+
 
 
 return (
-<AppContext.Provider  value={{films, deleteFilm, addFilm}}> {children} </AppContext.Provider>
+<AppContext.Provider  value={{films, deleteFilm, addFilm, updateFilm}}> {children} </AppContext.Provider>
 )
 
 }

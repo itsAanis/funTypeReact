@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 
 
 const Home = () => {
-  const {films, deleteFilm} = useContext(AppContext) ?? {films: [], deleteFilm: () => {} }
+  const {films, deleteFilm, updateFilm} = useContext(AppContext) ?? {films: [], deleteFilm: () => {}, updateFilm:() => {} }
   
 
   return (
@@ -22,7 +22,7 @@ const Home = () => {
       <Grid container spacing={3}>
         {films.map((film) => (
           <Grid item xs={12} md={6} lg={4} key={film.film_id}>
-            <Info film={film} deleteFilm={deleteFilm} />
+            <Info film={film} deleteFilm={deleteFilm}  updateFilm={updateFilm}/>
           </Grid>
         ))}
       </Grid>
