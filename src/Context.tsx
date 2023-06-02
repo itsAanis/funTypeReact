@@ -30,7 +30,7 @@ const AppProvider: React.FC <Props> = ({ children }) => {
     useEffect(() => {
     const fetchMovies = async() => {
     try{
-        const res = await axios.get('http://backendsss.azurewebsites.net/films')
+        const res = await axios.get('https://backendsss.azurewebsites.net/films')
         const {results} = res.data
         setFilms(results);   
     }
@@ -43,7 +43,7 @@ fetchMovies() }
 // add a film here 
 const addFilm = async(Title : string, Description: string) => {
   try {
-    const response = await axios.post('http://backendsss.azurewebsites.net/films', {
+    const response = await axios.post('https://backendsss.azurewebsites.net/films', {
       title: Title,
       description: Description
     })
@@ -58,7 +58,7 @@ catch (err) {
 // delete a film
 const deleteFilm = async (filmId: number):Promise<void> => {
   try {
-    await axios.delete(`http://backendsss.azurewebsites.net/films/${filmId}`)
+    await axios.delete(`https://backendsss.azurewebsites.net/films/${filmId}`)
   setFilms((prevFilms) => prevFilms.filter((film) => film.film_id !== filmId))
 }
 catch (err) {
@@ -69,7 +69,7 @@ catch (err) {
 // update a film
 const updateFilm = async(filmId: number, Title : string, Description: string) => { 
   try {
-    const response = await axios.put('http://backendsss.azurewebsites.net/films', {
+    const response = await axios.put('https://backendsss.azurewebsites.net/films', {
       title: Title,
       description: Description,
       film_id : filmId
