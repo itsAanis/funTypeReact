@@ -1,4 +1,3 @@
-import React from 'react'
 import { useContext} from 'react'
 import { AppContext } from './Context'
 import {Container} from '@mui/material'
@@ -15,8 +14,8 @@ const Home = () => {
     <Container>
       <div style={{ marginBottom: '20px' }}>
       <Typography
-      variant="h4" component="h1" align="center">
-          Welcome to Film The Collection
+      variant="h3" component="h1" align="center">
+          Welcome to The Film Collection
       </Typography>
       </div>
       <Grid container spacing={3}>
@@ -31,5 +30,3 @@ const Home = () => {
 };
 
 export default Home
-
-// how many columns it takes up out of 12  lg=4

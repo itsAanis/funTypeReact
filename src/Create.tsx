@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react'
 import { useContext} from 'react'
 import { AppContext } from './Context'
@@ -16,7 +15,7 @@ const Create = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault()
 
         addFilm(title, description);
