@@ -43,7 +43,7 @@ fetchMovies() }
 // add a film here 
 const addFilm = async(Title : string, Description: string) => {
   try {
-    const response = await axios.post('https://backendsss.azurewebsites.net/films', {
+    await axios.post('https://backendsss.azurewebsites.net/films', {
       title: Title,
       description: Description
     })
@@ -69,7 +69,7 @@ catch (err) {
 // update a film
 const updateFilm = async(filmId: number, Title : string, Description: string) => { 
   try {
-    const response = await axios.put('https://backendsss.azurewebsites.net/films', {
+     await axios.put('https://backendsss.azurewebsites.net/films', {
       title: Title,
       description: Description,
       film_id : filmId
